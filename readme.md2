@@ -1,0 +1,49 @@
+lambda object added
+create iam role
+
+with 
+amazons3fullacces
+awslambdabasicexecution
+cloudwatchfullaccess
+
+
+
+
+ a empty bucket
+
+create a labda fuction
+
+then configration
+ triggerr
+slect s3
+choose your bucket
+click add and then s3 bucket
+uplod .txt file with anycontent
+
+
+import boto3
+import json
+
+s3 = boto3.client('s3')
+
+def lambda_handler(event, context):
+    bucket = 'himbkt'
+    dataToUpload = {
+        'name': 'Himanshu',
+        'age': 25,
+        'profession': 'Engineer',
+        'address': 'Delhi',
+        'phone': '1234567890',
+        'file': 'himdata'
+    }
+    
+    fileName = 'himdata.json'
+    uploadByteStream = bytes(json.dumps(dataToUpload).encode('UTF-8'))
+    s3.put_object(Bucket=bucket, Key=fileName, Body=uploadByteStream)
+    
+    print('object has been uploaded')
+    
+    return {
+        'statusCode': 200,
+        'body': 'Object has been uploaded'
+    }
