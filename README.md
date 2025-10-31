@@ -41,3 +41,9 @@ SONARQUBE
 http://localhost:9000/
 
 
+extra 
+1) sudo apt update -y
+2) sudo apt install docker.io -y
+3) sudo systemctl enable docker
+4) sudo systemctl start docker
+5) sudo systemctl status docker
